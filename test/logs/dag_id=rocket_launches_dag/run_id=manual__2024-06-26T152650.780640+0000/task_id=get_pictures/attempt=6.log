@@ -1,0 +1,41 @@
+[2024-06-29T08:54:35.079+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-29T08:54:35.107+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [queued]>
+[2024-06-29T08:54:35.121+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [queued]>
+[2024-06-29T08:54:35.123+0000] {taskinstance.py:2306} INFO - Starting attempt 6 of 6
+[2024-06-29T08:54:35.150+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_pictures> on 2024-06-26 15:26:50.780640+00:00
+[2024-06-29T08:54:35.158+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=191) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-29T08:54:35.160+0000] {standard_task_runner.py:63} INFO - Started process 199 to run task
+[2024-06-29T08:54:35.161+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'rocket_launches_dag', 'get_pictures', 'manual__2024-06-26T15:26:50.780640+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/rocket_launches_dag.py', '--cfg-path', '/tmp/tmpdsa7yq8o']
+[2024-06-29T08:54:35.163+0000] {standard_task_runner.py:91} INFO - Job 63: Subtask get_pictures
+[2024-06-29T08:54:35.215+0000] {task_command.py:426} INFO - Running <TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [running]> on host 1bf8b89f489e
+[2024-06-29T08:54:35.316+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rocket_launches_dag' AIRFLOW_CTX_DAG_ID='rocket_launches_dag' AIRFLOW_CTX_TASK_ID='get_pictures' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T15:26:50.780640+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-26T15:26:50.780640+00:00'
+[2024-06-29T08:54:35.318+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-29T08:54:35.334+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-29T08:54:35.335+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/rocket_launches_dag.py", line 18, in _get_pictures
+    with open("/tmp/launches.json") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/launches.json'
+[2024-06-29T08:54:35.349+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=rocket_launches_dag, task_id=get_pictures, run_id=manual__2024-06-26T15:26:50.780640+00:00, execution_date=20240626T152650, start_date=20240629T085435, end_date=20240629T085435
+[2024-06-29T08:54:35.370+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 63 for task get_pictures ([Errno 2] No such file or directory: '/tmp/launches.json'; 199)
+[2024-06-29T08:54:35.416+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-29T08:54:35.445+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-29T08:54:35.454+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

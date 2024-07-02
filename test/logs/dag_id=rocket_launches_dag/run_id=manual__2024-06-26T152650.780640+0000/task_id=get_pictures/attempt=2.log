@@ -1,0 +1,102 @@
+[2024-06-27T15:13:48.794+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-06-27T15:13:49.205+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [queued]>
+[2024-06-27T15:13:49.289+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [queued]>
+[2024-06-27T15:13:49.291+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 6
+[2024-06-27T15:13:49.433+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): get_pictures> on 2024-06-26 15:26:50.780640+00:00
+[2024-06-27T15:13:49.477+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=417) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-06-27T15:13:49.514+0000] {standard_task_runner.py:63} INFO - Started process 418 to run task
+[2024-06-27T15:13:49.513+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'rocket_launches_dag', 'get_pictures', 'manual__2024-06-26T15:26:50.780640+00:00', '--job-id', '44', '--raw', '--subdir', 'DAGS_FOLDER/rocket_launches_dag.py', '--cfg-path', '/tmp/tmpd69xlmy6']
+[2024-06-27T15:13:49.520+0000] {standard_task_runner.py:91} INFO - Job 44: Subtask get_pictures
+[2024-06-27T15:13:49.666+0000] {task_command.py:426} INFO - Running <TaskInstance: rocket_launches_dag.get_pictures manual__2024-06-26T15:26:50.780640+00:00 [running]> on host 69160e04a996
+[2024-06-27T15:13:49.953+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rocket_launches_dag' AIRFLOW_CTX_DAG_ID='rocket_launches_dag' AIRFLOW_CTX_TASK_ID='get_pictures' AIRFLOW_CTX_EXECUTION_DATE='2024-06-26T15:26:50.780640+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-26T15:26:50.780640+00:00'
+[2024-06-27T15:13:49.954+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-06-27T15:13:58.163+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-06-27T15:13:58.166+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 964, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 491, in _make_request
+    raise new_e
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 467, in _make_request
+    self._validate_conn(conn)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1099, in _validate_conn
+    conn.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 616, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f5dfbb941a0>: Failed to resolve 'spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com' ([Errno -3] Temporary failure in name resolution)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com', port=443): Max retries exceeded with url: /media/images/falcon2520925_image_20221009234147.png (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f5dfbb941a0>: Failed to resolve 'spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com' ([Errno -3] Temporary failure in name resolution)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/rocket_launches_dag.py", line 23, in _get_pictures
+    response = requests.get(image_url)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com', port=443): Max retries exceeded with url: /media/images/falcon2520925_image_20221009234147.png (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f5dfbb941a0>: Failed to resolve 'spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com' ([Errno -3] Temporary failure in name resolution)"))
+[2024-06-27T15:13:58.225+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=rocket_launches_dag, task_id=get_pictures, run_id=manual__2024-06-26T15:26:50.780640+00:00, execution_date=20240626T152650, start_date=20240627T151349, end_date=20240627T151358
+[2024-06-27T15:13:58.252+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 44 for task get_pictures (HTTPSConnectionPool(host='spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com', port=443): Max retries exceeded with url: /media/images/falcon2520925_image_20221009234147.png (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f5dfbb941a0>: Failed to resolve 'spacelaunchnow-prod-east.nyc3.digitaloceanspaces.com' ([Errno -3] Temporary failure in name resolution)")); 418)
+[2024-06-27T15:13:58.281+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2024-06-27T15:13:58.308+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-06-27T15:13:58.310+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

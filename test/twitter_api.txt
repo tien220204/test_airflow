@@ -1,0 +1,14 @@
+Access token:
+    1808055300769079298-TQpehK8aemKrIxVBkCRCeQqaUynvVY
+Access token secret:
+    sWBiQbmdDl7nzwdqnoMVRXrpynRuPc05GoYYWwJBzONwD
+
+
+Api key: 
+    YMBLWqPNml5IUudhSSnKNAPVb
+Api key secret:
+    grC45IR3VvFIuinyOO5OcvkfnsVAwarbvfXWt5EASMUegJMtEv
+
+
+Bearer token:
+    AAAAAAAAAAAAAAAAAAAAAK19ugEAAAAAJgVnnyMxv1y3kVymPKH%2FIeJ6Cq4%3DOsy7zOuQmwUs4wMjX3hS74HK3tOs6Van9iMso7eoGBXoF1fas2
